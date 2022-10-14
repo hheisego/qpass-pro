@@ -1,5 +1,5 @@
-import { NONE_TYPE } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Usuarios } from 'src/app/models/usuarios';
 import { UsuariosService } from 'src/app/APIv1/usuarios.service';
 
 @Component({
@@ -16,9 +16,14 @@ export class ListaUsuariosComponent implements OnInit {
   public userOperation: any = [];
   public ListaUsuarios: any = [];
   public UserSelected: any = [];
+  //public userObject: any = new Usuarios();
   
 
-  constructor(private service: UsuariosService) { }
+  constructor(private service: UsuariosService) { 
+
+    //this.userObject.push(new Usuarios(this.ListaUsuarios[this.HighlightRow]));
+    ////this.usuario = new Usuario('Juan','Perez','Americas',2);
+  }
 
 
 
@@ -46,7 +51,7 @@ export class ListaUsuariosComponent implements OnInit {
 
     this.ModalTitle = "Agregar Usuario";
 
-    console.log("si llega")
+    console.log("si llega");
     
     this.userOperation = {
       id:"0",
@@ -57,38 +62,28 @@ export class ListaUsuariosComponent implements OnInit {
     }
 
     this.UserSelected = this.userOperation;
-    
+    //console.log(this.userOperation)
     this.ActivateAddEditUser = true;
 
   }
 
   editUserClick(){
 
-    this.ModalTitle = "Editar Usuario"
-    this.userOperation = this.ListaUsuarios[this.HighlightRow]
+    this.ModalTitle = "Editar Usuario";
+    this.userOperation = this.ListaUsuarios[this.HighlightRow];
     this.ActivateAddEditUser = true;
+    //console.log(this.userOperation)
+    this.UserSelected = this.ListaUsuarios[this.HighlightRow];
 
-    this.UserSelected = this.ListaUsuarios[this.HighlightRow]
-
-    //console.log(this.HighlightRow)
+    
+    //console.log(this.UserSelected)
     //console.log(this.ListaUsuarios[this.HighlightRow]['id'])
-  }
-
-  crearUsuario(/*private service*/) {
-
-    var palAPI = {"Nombre": "this.userOperation.Nombre"};
-    console.log();
-  }
-
-  editarUsuario(){
-
-
   }
 
   closeModal() {
 
     this.ActivateAddEditUser = false;
-    this.refreshUsers();
+    //this.refreshUsers();
 
   }
 
