@@ -11,15 +11,33 @@ export class UsuariosService {
 
   constructor(private http:HttpClient) { }
 
-  getUser(_id:any):Observable<any[]>{
+  getUser(id:any):Observable<any[]>{
 
-    return this.http.get<any>(this.API_Url + '/Usuarios' + _id);
+    return this.http.get<any>(this.API_Url + '/Usuarios/' + id);
 
   }
 
   getUsers(): Observable<any[]> {
 
     return this.http.get<any>(this.API_Url + '/Usuarios');
+
+  }
+
+  addNewUser(nuevoUsuario:any){
+
+   return this.http.post(this.API_Url + '/Usuarios/', nuevoUsuario);
+
+  }
+
+  updateUser(modifyUsuario: any) {
+
+    return this.http.put(this.API_Url + '/Usuarios/', modifyUsuario);
+
+  }
+
+  deleteUser(deleteUsuario: any) {
+
+    return this.http.delete(this.API_Url + '/Usuarios/', deleteUsuario);
 
   }
 

@@ -19,13 +19,14 @@ export class AddEditUsuariosComponent implements OnInit {
   public Apellidos: String = "";
   public Condominio: String = "";
   public Direccion: String = "";
+  public toast: String = "";
 
 
-  constructor(private service: ListaUsuariosComponent) { }
+  constructor(private serviceUsuario: ListaUsuariosComponent, private service: UsuariosService) {   }
 
   //@Input() UserSelected: any;
   
-  userObject: any = this.service.UserSelected;
+  userObject: any = this.serviceUsuario.UserSelected;
 
   
   ngOnInit(): void {
@@ -41,13 +42,22 @@ export class AddEditUsuariosComponent implements OnInit {
   
   crearUsuario() {
 
-    this.service.refreshUsers();
-    var palAPI = { "Nombre": "this.userOperation.Nombre" };
-    console.log("este es el click");
+    
+    var nuevoUsuario = {Nombre: this.Nombre, Apellidos: this.Apellidos, Condominio:this.Condominio};
+    
+    this.service.addNewUser(this.userObject).subscribe(res=>{
+ 
+      this.toast =('<div class="toast-body">'+ res.toString() +'</div>');
+      this.serviceUsuario.refreshUsers(); 
+
+    });
+    
+    console.log("este es el nuevo Usuario" + nuevoUsuario);
+    
   }
 
   editarUsuario() {
-    this.service.refreshUsers();
+    this.serviceUsuario.refreshUsers();
 
   }
 
@@ -60,7 +70,7 @@ export class AddEditUsuariosComponent implements OnInit {
     this.Direccion = "";
     this.Condominio = "";
 
-    this.service.refreshUsers();
+    this.serviceUsuario.refreshUsers();
     
 
   }

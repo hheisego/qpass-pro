@@ -1,23 +1,26 @@
 <div class="modal-body">
     <div class="form-group row" id="users-form">
         <div class="col-sm-4">
+            <input type="hidden" class="form-control" [(ngModel)]="userId"/>
             <label class="col-sm-2 col-form-label">Nombre: </label>
-            <input type="text" class="form-control" [(ngModel)]="Nombre" />
+            <input type="text" class="form-control" [(ngModel)]="Nombre"/>
         </div>
 
         <div class="col-sm-5">
             <label class="col-sm-2 col-form-label">Apellidos: </label>
-            <input type="text" class="form-control" [(ngModel)]="Apellidos" />
+            <input type="text" class="form-control" [(ngModel)]="Apellidos"/>
         </div>
 
         <div class="col-sm-5">
-            <label class="col-sm-2 col-form-label">Direccion: </label>
-            <input type="text" class="form-control" />
+            <label class="col-sm-2 col-form-label">Condominio: </label>
+            <input type="text" class="form-control" [(ngModel)]="Condominio"/>
         </div>
+
+        {{toast}}
     </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Cancelar </button>
-    <button type="button" class="btn btn-primary" *ngIf="userObject.id ==0" (click)="crearUsuario()">Crear</button>
-    <button type="button" class="btn btn-primary" *ngIf="userObject.id !=0" (click)="editarUsuario()">Editar</button>
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="userObject.id ==0" (click)="crearUsuario()">Crear</button>
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="userObject.id !=0" (click)="editarUsuario()">Editar</button>
 </div>
