@@ -20,6 +20,9 @@ import { UsuariosService } from './APIv1/usuarios.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
 import { AddEditUsuariosComponent } from './components/add-edit-usuarios/add-edit-usuarios.component';
+import { ComponentnameComponent } from './components/componentname/componentname.component';
+import { ToastComponent } from './components/toast/toast.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { AddEditUsuariosComponent } from './components/add-edit-usuarios/add-edi
     UsuarioComponent,
     UsuariosComponent,
     ListaUsuariosComponent,
-    AddEditUsuariosComponent
+    AddEditUsuariosComponent,
+    ComponentnameComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

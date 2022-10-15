@@ -14,12 +14,12 @@ export class AddEditUsuariosComponent implements OnInit {
 
   public ActivateAddEditUser: boolean = false;
 
-  public userId: String = "";
+  public userId: any = "";
   public Nombre: String = "";
   public Apellidos: String = "";
   public Condominio: String = "";
   public Direccion: String = "";
-  public toast: String = "";
+  public borrado: boolean = false;
 
 
   constructor(private serviceUsuario: ListaUsuariosComponent, private service: UsuariosService) {   }
@@ -36,6 +36,8 @@ export class AddEditUsuariosComponent implements OnInit {
     this.Apellidos = this.userObject["Apellidos"];
     this.Direccion = this.userObject["Direccion"];
     this.Condominio = this.userObject["Condominio"];
+    this.borrado = this.serviceUsuario.borrado;
+    console.log("este es el nuevo Usuario " + this.borrado);
 
   }
 
@@ -45,22 +47,33 @@ export class AddEditUsuariosComponent implements OnInit {
     
     var nuevoUsuario = {Nombre: this.Nombre, Apellidos: this.Apellidos, Condominio:this.Condominio};
     
-    this.service.addNewUser(this.userObject).subscribe(res=>{
+    this.service.addNewUser(nuevoUsuario).subscribe(res=>{
  
-      this.toast =('<div class="toast-body">'+ res.toString() +'</div>');
+      
       this.serviceUsuario.refreshUsers(); 
 
     });
     
-    console.log("este es el nuevo Usuario" + nuevoUsuario);
+    
     
   }
 
   editarUsuario() {
-    this.serviceUsuario.refreshUsers();
+
+    //id: this.userId, 
+    var modifyUsuario = {Nombre: this.Nombre, Apellidos: this.Apellidos, Condominio: this.Condominio};
+    var id_ = this.userId;
+
+    this.service.updateUser(id_, modifyUsuario).subscribe(res=>{
+
+      //this.toast = ('<div class="toast-body">' + res.toString() + '</div>');
+      this.serviceUsuario.refreshUsers(); 
+
+    })
 
   }
 
+ 
   closeModal() {
 
     this.ActivateAddEditUser = false;

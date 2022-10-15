@@ -29,15 +29,15 @@ export class UsuariosService {
 
   }
 
-  updateUser(modifyUsuario: any) {
+  updateUser(id_:any, modifyUsuario: any) {
 
-    return this.http.put(this.API_Url + '/Usuarios/', modifyUsuario);
+    return this.http.put(this.API_Url + '/Usuarios/' + id_, modifyUsuario);
 
   }
 
-  deleteUser(deleteUsuario: any) {
+  deleteUser(id_:any) {
 
-    return this.http.delete(this.API_Url + '/Usuarios/', deleteUsuario);
+    return this.http.delete(this.API_Url + '/Usuarios/' + id_);
 
   }
 

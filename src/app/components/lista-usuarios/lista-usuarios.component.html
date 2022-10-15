@@ -2,7 +2,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th><i class="bi-5 bi-trash"></i></th>
+            <th><i class="bi-5 bi-trash" (click)="delUserClick()" data-placement="top" title="Borrar"></i></th>
             <th><i class="bi-5 bi-plus-circle" (click)="addUserClick()" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-placement="top" title="Agregar"></i></th>
             <th><i class="bi-5 bi-pencil-square" (click)="editUserClick()" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-placement="top" title="Editar"></i></th>
 
@@ -38,8 +38,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()" ></button>
                 </div>
                 <app-add-edit-usuarios OperacionUsuario="userOperation" *ngIf="ActivateAddEditUser"></app-add-edit-usuarios>
-
             </div>
         </div>
     </div>
     
+
+    <button type="button" class="btn btn-primary" (click)="borrarUsuario()">Borrar</button>
