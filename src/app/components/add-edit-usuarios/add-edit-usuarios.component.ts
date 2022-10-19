@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UsuariosService } from 'src/app/APIv1/usuarios.service';
-//import { Usuarios } from 'src/app/models/usuarios';
+import Swal from 'sweetalert2'
 import { ListaUsuariosComponent } from '../lista-usuarios/lista-usuarios.component';
 
 @Component({
@@ -49,9 +49,15 @@ export class AddEditUsuariosComponent implements OnInit {
     
     this.service.addNewUser(nuevoUsuario).subscribe(res=>{
  
-      
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Usuario: '+ this.Nombre +' se ha creado',
+        showConfirmButton: false,
+        timer: 2222,
+       
+      })
       this.serviceUsuario.refreshUsers(); 
-
     });
     
     
@@ -65,6 +71,16 @@ export class AddEditUsuariosComponent implements OnInit {
     var id_ = this.userId;
 
     this.service.updateUser(id_, modifyUsuario).subscribe(res=>{
+
+
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Usuario: ' + this.Nombre + ' modificado correctamente',
+        showConfirmButton: false,
+        timer: 2222,
+
+      })
 
       //this.toast = ('<div class="toast-body">' + res.toString() + '</div>');
       this.serviceUsuario.refreshUsers(); 
