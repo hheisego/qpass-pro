@@ -6,8 +6,7 @@ import random
 class SuperCrud:
 
     #mongoport = random.randint(27017, 27019)
-    #client = MongoClient('localhost', 27015, username='mongo', password='Jafra2018!')
-    client = MongoClient('qpass-pro.pw', 27015, username='mongo', password='Jafra2018!')
+
     newdb = client['QPass-Pro']
     #collection = newdb['table']
 
