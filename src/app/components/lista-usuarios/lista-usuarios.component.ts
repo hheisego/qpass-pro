@@ -20,18 +20,15 @@ export class ListaUsuariosComponent implements OnInit {
   public ListaUsuarios: any = [];
   public UserSelected: any = [];
   public borrado: boolean = false;
-  //public modalText: any = [];
-  //public userObject: any = new Usuarios();
+  public tipoUsuario: any = [];
+  public fechaNacimiento: any = [];
+  public rfcORcurp: any  = '';
+  public correo: any = '';
+  public telefono: any = '';
+
   
-
-  constructor(
-    private service: UsuariosService  
-    
-    ){ 
-
-    //this.userObject.push(new Usuarios(this.ListaUsuarios[this.HighlightRow]));
-    ////this.usuario = new Usuario('Juan','Perez','Americas',2);
-  }
+  constructor(private service: UsuariosService     
+              ){}
 
 
 
@@ -66,11 +63,16 @@ export class ListaUsuariosComponent implements OnInit {
       Nombre: "", 
       Apellidos:"",
       Condominio:"",
-      Direccion:""
-    }
+      Direccion:"",
+      tipoUsuario: "",
+      fechaNacimiento: "",
+      rfcORcurp: "",
+      correo: "",
+      telefono: "",
+      }
 
     this.UserSelected = this.userOperation;
-    //console.log(this.userOperation)
+  
     this.ActivateAddEditUser = true;
 
   }
@@ -81,12 +83,10 @@ export class ListaUsuariosComponent implements OnInit {
     this.ModalTitle = "Editar Usuario";
     this.userOperation = this.ListaUsuarios[this.HighlightRow];
     
-    //console.log(this.userOperation)
     this.UserSelected = this.ListaUsuarios[this.HighlightRow];
 
     this.borrado = false;
-    //console.log(this.UserSelected)
-    //console.log(this.ListaUsuarios[this.HighlightRow]['id'])
+
   }
 
   delUserClick(){
@@ -107,7 +107,7 @@ export class ListaUsuariosComponent implements OnInit {
     console.log(id_)
     this.service.deleteUser(id_).subscribe(res => {
 
-      //this.toast = ('<div class="toast-body">' + res.toString() + '</div>');
+
       this.refreshUsers();
 
     })

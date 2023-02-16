@@ -20,6 +20,11 @@ export class AddEditUsuariosComponent implements OnInit {
   public Condominio: String = "";
   public Direccion: String = "";
   public borrado: boolean = false;
+  public tipoUsuario: any = '';
+  public fechaNacimiento: any = '';
+  public rfcORcurp: any = '';
+  public correo: any = '';
+  public telefono: any = '';
 
 
   constructor(private serviceUsuario: ListaUsuariosComponent, private service: UsuariosService) {   }
@@ -37,7 +42,12 @@ export class AddEditUsuariosComponent implements OnInit {
     this.Direccion = this.userObject["Direccion"];
     this.Condominio = this.userObject["Condominio"];
     this.borrado = this.serviceUsuario.borrado;
-    console.log("este es el nuevo Usuario " + this.borrado);
+    this.tipoUsuario = this.userObject["tipoUsuario"];
+    this.fechaNacimiento = this.userObject["fechaNacimiento"];
+    this.rfcORcurp = this.userObject["rfcOrcurp"];
+    this.correo = this.userObject["correo"];
+    this.telefono = this.userObject["telefono"];
+
 
   }
 
@@ -45,7 +55,16 @@ export class AddEditUsuariosComponent implements OnInit {
   crearUsuario() {
 
     
-    var nuevoUsuario = {Nombre: this.Nombre, Apellidos: this.Apellidos, Condominio:this.Condominio};
+    var nuevoUsuario = {Nombre: this.Nombre, 
+                        Apellidos: this.Apellidos, 
+                        Condominio:this.Condominio,
+                        Direccion:this.Direccion,
+                        tipoUsuario:this.tipoUsuario,
+                        fechaNacimiento:this.fechaNacimiento,
+                        rfcOrcurp:this.rfcORcurp,
+                        correo:this.correo,
+                        telefono:this.telefono
+                      };
     
     this.service.addNewUser(nuevoUsuario).subscribe(res=>{
  
@@ -67,7 +86,17 @@ export class AddEditUsuariosComponent implements OnInit {
   editarUsuario() {
 
     //id: this.userId, 
-    var modifyUsuario = {Nombre: this.Nombre, Apellidos: this.Apellidos, Condominio: this.Condominio};
+    var modifyUsuario = {Nombre: this.Nombre, 
+                        Apellidos: this.Apellidos, 
+                        Condominio: this.Condominio,
+                        Direccion: this.Direccion,
+                        tipoUsuario: this.tipoUsuario,
+                        fechaNacimiento: this.fechaNacimiento,
+                        rfcOrcurp: this.rfcORcurp,
+                        correo: this.correo,
+                        telefono: this.telefono
+                      };
+
     var id_ = this.userId;
 
     this.service.updateUser(id_, modifyUsuario).subscribe(res=>{
@@ -82,7 +111,7 @@ export class AddEditUsuariosComponent implements OnInit {
 
       })
 
-      //this.toast = ('<div class="toast-body">' + res.toString() + '</div>');
+      
       this.serviceUsuario.refreshUsers(); 
 
     })
@@ -98,6 +127,12 @@ export class AddEditUsuariosComponent implements OnInit {
     this.Apellidos = "";
     this.Direccion = "";
     this.Condominio = "";
+    this.Direccion = "";
+    this.tipoUsuario = "";
+    this.fechaNacimiento = "";
+    this.rfcORcurp = "";
+    this.correo = "";
+    this.telefono = "";
 
     this.serviceUsuario.refreshUsers();
     

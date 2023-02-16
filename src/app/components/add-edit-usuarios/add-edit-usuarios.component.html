@@ -1,26 +1,53 @@
 <div class="modal-body">
     <div class="form-group row" id="users-form">
         <div class="col-sm-4">
-            <input type="hidden" class="form-control" [(ngModel)]="userId"/>
+            <input type="hidden" class="form-control" [(ngModel)]="userId" />
             <label class="col-sm-2 col-form-label">Nombre: </label>
-            <input type="text" class="form-control" [(ngModel)]="Nombre"/>
+            <input type="text" class="form-control" [(ngModel)]="Nombre" />
         </div>
-
         <div class="col-sm-5">
             <label class="col-sm-2 col-form-label">Apellidos: </label>
-            <input type="text" class="form-control" [(ngModel)]="Apellidos"/>
+            <input type="text" class="form-control" [(ngModel)]="Apellidos" />
         </div>
-
         <div class="col-sm-5">
             <label class="col-sm-2 col-form-label">Condominio: </label>
-            <input type="text" class="form-control" [(ngModel)]="Condominio"/>
+            <input type="text" class="form-control" [(ngModel)]="Condominio" />
+        </div>
+        <div class="col-sm-6">
+            <label class="col-sm-8 col-form-label" for="inputGroupSelect01">Tipo de Usuario</label><br />
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="tipoUsuario">
+                <option value="Condomino" selected>Condomino</option>
+                <option value="Inquilino">Inquilino</option>
+                <option value="Encargado">Encargado</option>
+            </select>
+        </div>
+        <div class="col-sm-5">
+            <label class="col-sm-6 col-form-label">RFC o CURP: </label>
+            <input type="text" class="form-control" [(ngModel)]="rfcORcurp" />
+        </div>
+        <div class="col-sm-5">
+            <label class="col-sm-6 col-form-label">Correo: </label>
+            <input type="text" class="form-control" [(ngModel)]="correo" />
+        </div>
+        <div class="col-sm-5">
+            <label class="col-sm-6 col-form-label">Telefono: </label>
+            <input type="text" class="form-control" [(ngModel)]="telefono" />
+        </div>
+        <div class="col-sm-7">
+            <label class="col-sm-8 col-form-label">Fecha de Nacimiento: </label>
+            <input type="text" class="form-control" [(ngModel)]="fechaNacimiento" />
+        </div>
+        <div class="col-sm-10">
+            <label class="col-sm-8 col-form-label">Direccion: </label>
+            <input type="text" class="form-control" [(ngModel)]="Direccion" />
         </div>
 
-        
     </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Cancelar </button>
-    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="userObject.id ==0" (click)="crearUsuario()">Crear</button>
-    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="userObject.id !=0" (click)="editarUsuario()">Editar</button>
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="userObject.id ==0"
+        (click)="crearUsuario()">Crear</button>
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="userObject.id !=0"
+        (click)="editarUsuario()">Editar</button>
 </div>

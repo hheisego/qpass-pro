@@ -14,7 +14,10 @@
             <th>Condominio</th>
             <th>Direccion</th>
             <th>Tipo de Usuario</th>
-            
+            <th>Fecha de Nacimiento</th>
+            <th>RFC/CURP</th>
+            <th>Correo</th>
+            <th>Telefono</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +27,11 @@
             <td role="button">{{usuario.Apellidos}}</td>
             <td role="button">{{usuario.Condominio}}</td>
             <td role="button">{{usuario.Direccion}}</td>
+            <td role="button">{{usuario.TipoDeUsuario}}</td>
+            <td role="button">{{usuario.fechaNacimiento}}</td>
+            <td role="button">{{usuario.rfcORcurp}}</td>
+            <td role="button">{{usuario.correo}}</td>
+            <td role="button">{{usuario.telefono}}</td>
         </tr>
     </tbody>
 </table>
@@ -41,6 +49,4 @@
             </div>
         </div>
     </div>
-    
-
     <button type="button" class="btn btn-primary" (click)="borrarUsuario()">Borrar</button>
