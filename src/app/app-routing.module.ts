@@ -5,13 +5,15 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { InvitacionesComponent } from './components/invitaciones/invitaciones.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  {path:'', component: LayoutComponent},
-  {path:'directorio', component: AgendaComponent},
-  {path:'invitaciones', component: InvitacionesComponent},
-  {path:'usuario', component: UsuarioComponent},
-  {path:'Usuarios',component: UsuariosComponent}
+  { path:'', component: LoginComponent },
+  { path: 'dashboard', component: LayoutComponent },
+  { path:'directorio', component: AgendaComponent },
+  { path:'invitaciones', component: InvitacionesComponent },
+  { path:'usuario', component: UsuarioComponent },
+  { path:'Usuarios',component: UsuariosComponent }
 ];
 
 @NgModule(

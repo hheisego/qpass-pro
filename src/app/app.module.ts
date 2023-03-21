@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,8 @@ import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuari
 import { AddEditUsuariosComponent } from './components/add-edit-usuarios/add-edit-usuarios.component';
 import { ComponentnameComponent } from './components/componentname/componentname.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import { ToastComponent } from './components/toast/toast.component';
     ListaUsuariosComponent,
     AddEditUsuariosComponent,
     ComponentnameComponent,
-    ToastComponent
+    ToastComponent,
+    LoginComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,7 @@ import { ToastComponent } from './components/toast/toast.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UsuariosService],
+  providers: [UsuariosService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
